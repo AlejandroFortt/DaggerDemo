@@ -6,7 +6,7 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-class EngineModule(private val model: String) {
+class EngineModule {
 
     /**
      * Aquí le enseñamos a Dagger a crear instancias del motor que queramos usar.
@@ -15,7 +15,5 @@ class EngineModule(private val model: String) {
      * método a dieselEngine: DieselEngine y devolvemos dieselEngine.
      */
     @Provides
-    fun provideEngine(): Engine {
-        return ElectricEngine(model)
-    }
+    fun provideEngine(electricEngine: ElectricEngine): Engine = electricEngine
 }
