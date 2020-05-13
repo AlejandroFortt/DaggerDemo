@@ -3,7 +3,6 @@ package com.fortatic.apps.io.daggerdemo.di
 import com.fortatic.apps.io.daggerdemo.MainActivity
 import dagger.BindsInstance
 import dagger.Component
-import javax.inject.Named
 
 @Component(
     modules = [
@@ -18,10 +17,10 @@ interface CarComponent {
     interface Builder {
 
         @BindsInstance
-        fun setModel(@Named("model engine") model: String): Builder
+        fun setModel(@SpecsQualifier(EngineSpecs.ModelEngine) modelEngine: String): Builder
 
         @BindsInstance
-        fun setPower(@Named("power engine") power: Int): Builder
+        fun setPower(@SpecsQualifier(EngineSpecs.PowerEngine) powerEngine: Int): Builder
 
         fun build(): CarComponent
     }
