@@ -2,11 +2,16 @@ package com.fortatic.apps.io.daggerdemo
 
 import android.util.Log
 import javax.inject.Inject
+import javax.inject.Singleton
 
-class Car @Inject constructor(private val engine: Engine, private val wheels: Wheels) {
+class Car @Inject constructor(
+    private val driver: Driver,
+    private val engine: Engine,
+    private val wheels: Wheels
+) {
     fun drive() {
         engine.startEngine()
-        Log.d("FATAL", "driving...")
+        Log.d("FATAL", "$driver is driving $this")
     }
 
     @Inject
@@ -20,6 +25,16 @@ class Remote @Inject constructor() {
         Log.d("FATAL", "control remote enabled")
     }
 }
+
+/**
+ * Al anotar esta clase con @Singleton, le decimos a Dagger que solo cree
+ * una instancia de esta clase y la reuse cuando necesitemos más de una.
+ *
+ * Para que esta anotación funcione, también debemos anotar nuestro Component
+ * (CarComponent) con @Singleton.
+ */
+@Singleton
+class Driver @Inject constructor()
 
 /**
  * Supongamos que queremos que Dagger cree instancias de una clase a la cual

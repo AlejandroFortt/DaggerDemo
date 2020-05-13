@@ -15,6 +15,9 @@ class MainActivity : AppCompatActivity() {
     @Inject
     lateinit var car: Car
 
+    @Inject
+    lateinit var car2: Car
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -27,6 +30,13 @@ class MainActivity : AppCompatActivity() {
 
         carComponent.inject(this)
 
+        /**
+         * Creamos dos objetos Car para demostrar la efectividad de la anotación @Singleton
+         * que usamos en la clase Drive.
+         * En el logcat se puede ver como tenemos dos instancias de Car, pero estas reusan
+         * una misma instancia de Drive.
+         */
         car.drive()
+        car2.drive()
     }
 }
