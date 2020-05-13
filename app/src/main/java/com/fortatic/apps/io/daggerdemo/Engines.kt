@@ -8,13 +8,14 @@ interface Engine {
 }
 
 /**
- * Anotamos el constructor con @Inject para que Dagger sepa como
- * crear instancias de esta clase
+ * Quitamos la anotación @Inject porque ahora Dagger no creará una
+ * instancia de esta clase, lo haremos nosotros mediante un método
+ * proveedor en EngineModule.
  */
-class ElectricEngine @Inject constructor() :
+class ElectricEngine (private val model: String) :
     Engine {
     override fun startEngine() {
-        Log.d("FATAL", "electric engine started")
+        Log.d("FATAL", "electric engine: $model started")
     }
 }
 

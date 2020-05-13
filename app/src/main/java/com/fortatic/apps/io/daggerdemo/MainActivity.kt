@@ -3,6 +3,7 @@ package com.fortatic.apps.io.daggerdemo
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.fortatic.apps.io.daggerdemo.di.DaggerCarComponent
+import com.fortatic.apps.io.daggerdemo.di.EngineModule
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
@@ -20,7 +21,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         //Injección de campo
-        DaggerCarComponent.create().inject(this)
+        val carComponent = DaggerCarComponent.builder()
+            .engineModule(EngineModule("MTX-500"))
+            .build()
+
+        carComponent.inject(this)
 
         car.drive()
     }
