@@ -5,6 +5,7 @@ import javax.inject.Inject
 
 class Car @Inject constructor(private val engine: Engine, private val wheels: Wheels) {
     fun drive() {
+        engine.startEngine()
         Log.d("FATAL", "driving...")
     }
 
@@ -13,8 +14,6 @@ class Car @Inject constructor(private val engine: Engine, private val wheels: Wh
         remote.on(this)
     }
 }
-
-class Engine @Inject constructor()
 
 class Remote @Inject constructor() {
     fun on(car: Car) {
@@ -28,7 +27,7 @@ class Remote @Inject constructor() {
  * propia del framework de android(p.e. String, Context, etc.).
  * En dicho caso nos es imposible agregar @Inject al constructor de dicha clase
  * ya que la clase no es modificable para nosotros.
- * La solución a esto se consigue implementando proveedores(@Providers)
+ * La solución a esto se consigue implementando proveedores(@Provides)
  * @see package com.fortatic.apps.io.daggerdemo.di.WheelsModule
  */
 class Wheels(rims: Rims, tires: Tires)
