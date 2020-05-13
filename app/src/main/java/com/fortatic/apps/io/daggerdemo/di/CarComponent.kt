@@ -20,6 +20,9 @@ interface CarComponent {
         @BindsInstance
         fun setModel(@Named("model engine") model: String): Builder
 
+        @BindsInstance
+        fun setPower(@Named("power engine") power: Int): Builder
+
         fun build(): CarComponent
     }
 }

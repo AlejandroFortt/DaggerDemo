@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         //Injección de campo
         val carComponent = DaggerCarComponent.builder()
             .setModel("GTX-450")
+            .setPower(450)
             .build()
 
         carComponent.inject(this)

@@ -14,11 +14,12 @@ interface Engine {
  * CarComponent.
  */
 class ElectricEngine @Inject constructor(
-    @Named("model engine") private val model: String
+    @Named("model engine") private val model: String,
+    @Named("power engine") private val power: Int
 ) :
     Engine {
     override fun startEngine() {
-        Log.d("FATAL", "electric engine: $model started")
+        Log.d("FATAL", "electric engine: $model[${power}W] started")
     }
 }
 
