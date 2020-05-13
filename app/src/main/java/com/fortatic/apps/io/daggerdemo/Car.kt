@@ -7,8 +7,19 @@ class Car @Inject constructor(private val engine: Engine, private val wheels: Wh
     fun drive() {
         Log.d("FATAL", "driving...")
     }
+
+    @Inject
+    fun enableRemote(remote: Remote) {
+        remote.on(this)
+    }
 }
 
 class Engine @Inject constructor()
 
 class Wheels @Inject constructor()
+
+class Remote @Inject constructor() {
+    fun on(car: Car) {
+        Log.d("FATAL", "control remote enable")
+    }
+}
