@@ -1,9 +1,9 @@
 package com.fortatic.apps.io.daggerdemo.di
 
-import com.fortatic.apps.io.daggerdemo.Car
+import com.fortatic.apps.io.daggerdemo.MainActivity
 import dagger.Component
 
 @Component
 interface CarComponent {
-    fun getCar() : Car
+    fun inject(mainActivity: MainActivity)
 }
