@@ -1,8 +1,8 @@
 package com.fortatic.apps.io.daggerdemo
 
-import android.util.Log
 import com.fortatic.apps.io.daggerdemo.di.EngineSpecs
 import com.fortatic.apps.io.daggerdemo.di.SpecsQualifier
+import timber.log.Timber
 import javax.inject.Inject
 
 interface Engine {
@@ -20,13 +20,13 @@ class ElectricEngine @Inject constructor(
 ) :
     Engine {
     override fun startEngine() {
-        Log.d("FATAL", "electric engine: $modelEngine[${powerEngine}W] started")
+        Timber.d("electric engine: $modelEngine[${powerEngine}W] started")
     }
 }
 
 class DieselEngine @Inject constructor() :
     Engine {
     override fun startEngine() {
-        Log.d("FATAL", "diesel engine started")
+        Timber.d("diesel engine started")
     }
 }

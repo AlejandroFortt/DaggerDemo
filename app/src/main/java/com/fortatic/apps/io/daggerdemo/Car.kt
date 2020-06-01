@@ -1,6 +1,6 @@
 package com.fortatic.apps.io.daggerdemo
 
-import android.util.Log
+import timber.log.Timber
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -11,7 +11,7 @@ class Car @Inject constructor(
 ) {
     fun drive() {
         engine.startEngine()
-        Log.d("FATAL", "$driver is driving $this")
+        Timber.d("$driver is driving $this")
     }
 
     @Inject
@@ -22,7 +22,7 @@ class Car @Inject constructor(
 
 class Remote @Inject constructor() {
     fun on(car: Car) {
-        Log.d("FATAL", "control remote enabled")
+        Timber.d("control remote enabled")
     }
 }
 
@@ -50,6 +50,6 @@ class Wheels(rims: Rims, tires: Tires)
 class Rims
 class Tires {
     fun inflateTires() {
-        Log.d("FATAL", "inflated tires")
+        Timber.d("inflated tires")
     }
 }
