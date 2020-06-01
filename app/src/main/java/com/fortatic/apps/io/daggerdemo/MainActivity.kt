@@ -2,7 +2,6 @@ package com.fortatic.apps.io.daggerdemo
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.fortatic.apps.io.daggerdemo.di.DaggerCarComponent
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
@@ -22,19 +21,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //Injección de campo
-        val carComponent = DaggerCarComponent.builder()
-            .setModel("GTX-450")
-            .setPower(450)
-            .build()
-
-        carComponent.inject(this)
+        /**
+         * En cada recreación de MainActivity, solicitamos la injección de campo
+         * a MainActivity mediante el método getCarComponent().
+         */
+        (application as MainApplication).getCarComponent().inject(this)
 
         /**
-         * Creamos dos objetos Car para demostrar la efectividad de la anotación @Singleton
-         * que usamos en la clase Drive.
          * En el logcat se puede ver como tenemos dos instancias de Car, pero estas reusan
-         * una misma instancia de Drive.
+         * una misma instancia de Driver aún cuando ocurre una rotación de pantalla.
          */
         car.drive()
         car2.drive()
